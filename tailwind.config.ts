@@ -34,7 +34,6 @@ export default {
           "Roboto",
           "Helvetica",
           "Arial",
-          "sans-serif",
         ],
       },
     },

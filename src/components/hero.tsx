@@ -15,7 +15,7 @@ export default function Hero() {
         </span>
       </span>
 
-      <h1 className="mx-0 mb-2 mt-3 text-[clamp(30px,6vw,46px)] font-[950] leading-[1.05] tracking-[-0.03em]">
+      <h1 className="mx-0 mb-2 mt-3 text-[clamp(30px,6vw,46px)] font-bold leading-[1.05] tracking-[-0.03em]">
         Treine Jiu Jitsu com método, energia e um time que te puxa pra cima.
       </h1>
 

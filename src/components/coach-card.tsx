@@ -54,7 +54,7 @@ export default function CoachCard() {
         {/* Divider */}
         <div className="my-3.5 h-px bg-white/[0.08]" />
 
-        <div className="text-[13px] leading-relaxed text-muted">
+        <div className="text-[13px] leading-[1.6] text-muted">
           <b className="text-text">Endereço:</b> {RESILIENCE.address}
         </div>
       </div>

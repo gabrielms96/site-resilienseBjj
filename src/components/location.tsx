@@ -9,10 +9,10 @@ import {
 export default function Location() {
   return (
     <section id="local" className="py-[22px]">
-      <h2 className="mb-1.5 mt-0 text-[22px] font-[950] tracking-[-0.02em]">
+      <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Localização
       </h2>
-      <p className="m-0 leading-relaxed text-muted">{RESILIENCE.address}</p>
+      <p className="m-0 leading-[1.6] text-muted">{RESILIENCE.address}</p>
 
       {/* Map card */}
       <div className="mt-3 overflow-hidden rounded-r24 border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] shadow-card">

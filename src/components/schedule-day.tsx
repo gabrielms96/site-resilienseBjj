@@ -15,7 +15,7 @@ export default function ScheduleDay({
 
   return (
     <details
-      className={`overflow-hidden rounded-r20 border border-white/10 bg-white/[0.03] [&[open]]:border-red/25 [&[open]]:bg-[radial-gradient(700px_250px_at_20%_10%,rgba(255,27,45,0.16),transparent_60%),rgba(255,255,255,0.03)]`}
+      className="day-accordion overflow-hidden rounded-r20 border border-white/10 bg-white/[0.03]"
       open={defaultOpen || undefined}
     >
       <summary className="flex cursor-pointer items-center justify-between gap-3 p-3.5 font-[950]">

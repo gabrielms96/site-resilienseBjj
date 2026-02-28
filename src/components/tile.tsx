@@ -10,8 +10,8 @@ export default function Tile({ icon, title, description }: TileProps) {
       <div className="mb-2.5 flex h-[42px] w-[42px] items-center justify-center rounded-[14px] border border-red/35 bg-red/10 text-lg">
         {icon}
       </div>
-      <h3 className="mb-1.5 mt-0 text-base font-[950]">{title}</h3>
-      <p className="m-0 text-sm leading-relaxed text-muted">{description}</p>
+      <h3 className="mb-1.5 mt-0 text-base font-bold">{title}</h3>
+      <p className="m-0 text-sm leading-[1.6] text-muted">{description}</p>
     </div>
   );
 }

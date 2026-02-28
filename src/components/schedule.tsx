@@ -4,10 +4,10 @@ import ScheduleDay from "./schedule-day";
 export default function Schedule() {
   return (
     <section id="horarios" className="py-[22px]">
-      <h2 className="mb-1.5 mt-0 text-[22px] font-[950] tracking-[-0.02em]">
+      <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Horários
       </h2>
-      <p className="m-0 leading-relaxed text-muted">
+      <p className="m-0 leading-[1.6] text-muted">
         Toque no dia para abrir. Depois clique em{" "}
         <b className="text-text">"Quero este horário"</b> e mande a mensagem
         pronta.
@@ -37,7 +37,7 @@ export default function Schedule() {
         ))}
       </div>
 
-      <p className="mt-3 text-[13px] leading-relaxed text-muted">
+      <p className="mt-3 text-[13px] leading-[1.6] text-muted">
         * Horários podem variar em feriados/eventos. Confirme pelo WhatsApp.
       </p>
     </section>
