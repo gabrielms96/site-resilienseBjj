@@ -1,418 +1,29 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Resilience BJJ — Aula Experimental Gratuita</title>
-  <meta name="description" content="Treine Jiu-Jitsu na Resilience BJJ em São Sebastião do Paraíso. Kids, Adulto e No-Gi. Aula experimental gratuita. Agende pelo WhatsApp." />
+  <title>Resilience BJJ - Aula Experimental Gratuita</title>
+  <meta name="description"
+    content="Treine Jiu Jitsu na Resilience BJJ em São Sebastião do Paraíso. Kids, Adulto e No-Gi. Aula experimental gratuita. Agende pelo WhatsApp." />
   <meta name="theme-color" content="#0b0b0c" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Resilience Brazilian Jiu Jitsu" />
   <meta property="og:description" content="Kids • Adulto • No-Gi • Aula experimental gratuita. Agende no WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="logo.jpeg" />
+  <meta property="og:image" content="assets/logo.jpeg" />
 
-  <style>
-    :root{
-      --bg:#070708;
-      --card:#0f0f12;
-      --text:#f4f4f5;
-      --muted:#b7b7c2;
-      --red:#ff1b2d;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --r16: 16px;
-      --r20: 20px;
-      --r24: 24px;
-      --max: 1100px;
-      --ring: 0 0 0 3px rgba(255,27,45,.25);
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --safe-top: env(safe-area-inset-top, 0px);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(900px 550px at 70% 10%, rgba(255,27,45,.22), transparent 60%),
-        radial-gradient(700px 500px at 12% 18%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(180deg, #050506 0%, #0b0b0c 30%, #050506 100%);
-      overflow-x:hidden;
-    }
-    a{color:inherit; text-decoration:none}
-    .container{width:min(var(--max), calc(100% - 28px)); margin:0 auto}
-
-    /* Header (mobile-first, no cut) */
-    header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(7,7,8,.70);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      backdrop-filter: blur(12px);
-      padding-top: var(--safe-top);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 0;
-      flex-wrap:wrap;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:0;
-      flex: 1 1 260px; /* deixa quebrar elegante no mobile */
-    }
-    .brand img{
-      width:40px; height:40px; border-radius:12px; object-fit:cover;
-      border:1px solid rgba(255,255,255,.12);
-      background:#111;
-      flex:0 0 auto;
-    }
-    .brand .t1{font-weight:950; letter-spacing:-.02em; line-height:1.1}
-    .brand .t2{color:var(--muted); font-size:12px; margin-top:2px}
-    .navcta{
-      display:flex; gap:10px; align-items:center;
-      flex: 1 1 220px;
-      justify-content:flex-end;
-      flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px; border-radius:14px;
-      font-weight:900; font-size:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      cursor:pointer;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18)}
-    .btn:focus{outline:none; box-shadow: var(--ring)}
-    .btn.primary{
-      background:linear-gradient(135deg, var(--red) 0%, #ff3c4b 55%, #ff6a75 100%);
-      border-color: rgba(255,27,45,.55);
-      color:#0b0b0c;
-    }
-    .btn.ghost{background:transparent; border-color: rgba(255,255,255,.10)}
-    .btn.small{padding:10px 12px; font-size:13px; border-radius:13px}
-
-    /* Mobile tweaks */
-    @media (max-width: 520px){
-      .container{width: calc(100% - 22px);}
-      .nav{justify-content:center}
-      .brand{flex: 1 1 100%; justify-content:center; text-align:center}
-      .navcta{flex: 1 1 100%; justify-content:center}
-      .btn{flex: 1 1 160px}
-      .btn.primary{flex: 1 1 220px}
-    }
-
-    /* Sections */
-    main{padding-bottom: calc(86px + var(--safe-bottom));} /* espaço para barra fixa */
-    section{padding:22px 0}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border:1px solid var(--line);
-      border-radius:999px; color:var(--muted); background:rgba(255,255,255,.03);
-      backdrop-filter: blur(10px);
-      font-weight:800;
-      font-size:13px;
-    }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--red); box-shadow:0 0 0 4px rgba(255,27,45,.15)}
-    .hero{
-      padding:22px 0 6px;
-      display:grid;
-      gap:14px;
-    }
-    .hero h1{
-      margin:12px 0 8px;
-      font-size: clamp(30px, 6vw, 46px);
-      letter-spacing:-.03em;
-      line-height:1.05;
-    }
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-      font-size: 15.5px;
-      max-width: 70ch;
-    }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 900px){
-      .cards{grid-template-columns:1fr}
-    }
-    .card{
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius: var(--r24);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .pad{padding:16px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
-      border-radius:14px;
-      background:rgba(255,27,45,.12);
-      border:1px solid rgba(255,27,45,.30);
-      color:#ffd5d9;
-      font-weight:950;
-      font-size:13px;
-    }
-    .miniLine{height:1px; background:rgba(255,255,255,.08); margin:14px 0}
-    .row{display:flex; gap:12px; align-items:center}
-    .avatar{
-      width:50px;height:50px;border-radius:16px;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,27,45,.85), transparent 55%),
-        radial-gradient(circle at 70% 60%, rgba(255,255,255,.12), transparent 55%),
-        linear-gradient(135deg, #111, #060607);
-      border:1px solid rgba(255,255,255,.12);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:950;
-    }
-    .muted{color:var(--muted)}
-    .h2{
-      margin:0 0 6px;
-      font-size: 22px;
-      letter-spacing:-.02em;
-    }
-    .sub{margin:0; color:var(--muted); line-height:1.6}
-
-    /* Feature tiles */
-    .tile{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      border-radius: var(--r20);
-      padding:14px;
-    }
-    .tile .icon{
-      width:42px;height:42px;border-radius:14px;
-      display:flex; align-items:center; justify-content:center;
-      border:1px solid rgba(255,27,45,.35);
-      background:rgba(255,27,45,.10);
-      margin-bottom:10px;
-      font-size:18px;
-    }
-    .tile h3{margin:0 0 6px; font-size:16px}
-    .tile p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
-
-    /* Schedule (mobile-native accordion) */
-    .schedule{
-      display:grid;
-      gap:10px;
-    }
-    details.day{
-      border-radius: var(--r20);
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      overflow:hidden;
-    }
-    details.day[open]{
-      background:
-        radial-gradient(700px 250px at 20% 10%, rgba(255,27,45,.16), transparent 60%),
-        rgba(255,255,255,.03);
-      border-color: rgba(255,27,45,.25);
-    }
-    summary.daySum{
-      list-style:none;
-      cursor:pointer;
-      padding:14px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      font-weight:950;
-    }
-    summary.daySum::-webkit-details-marker{display:none}
-    .tag{
-      font-size:11px;
-      font-weight:950;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--muted);
-      background:rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
-    .slots{
-      padding:0 14px 14px;
-      display:grid;
-      gap:10px;
-    }
-    .slot{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.18);
-      padding:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .slot .left{display:grid; gap:2px}
-    .time{font-weight:950; letter-spacing:-0.01em}
-    .type{font-size:12px; color:var(--muted); font-weight:850}
-    .type b{color:#ffd5d9}
-    .mini{
-      padding:10px 12px;
-      border-radius:14px;
-      font-size:12px;
-      font-weight:950;
-      border:1px solid rgba(255,27,45,.30);
-      background:rgba(255,27,45,.10);
-      white-space:nowrap;
-    }
-    .mini:hover{background:rgba(255,27,45,.16)}
-    .legend{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-
-    /* FAQ */
-    .faq{display:grid; gap:10px}
-    details.faqItem{
-      border-radius: var(--r20);
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      padding:12px 14px;
-    }
-    summary.faqSum{
-      cursor:pointer;
-      font-weight:950;
-      list-style:none;
-    }
-    summary.faqSum::-webkit-details-marker{display:none}
-    details.faqItem p{margin:10px 0 0; color:var(--muted); line-height:1.6}
-
-    /* Map card */
-    .mapCard iframe{width:100%; height:320px; border:0; display:block}
-
-    /* Floating WhatsApp */
-    .fab{
-      position:fixed;
-      right:14px;
-      bottom: calc(86px + 14px + var(--safe-bottom));
-      z-index:80;
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-    .fab a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:54px;
-      height:54px;
-      border-radius:18px;
-      border:1px solid rgba(255,27,45,.40);
-      background:linear-gradient(135deg, rgba(255,27,45,.95), rgba(255,80,90,.95));
-      box-shadow: 0 14px 35px rgba(0,0,0,.5);
-      font-weight:950;
-      color:#0b0b0c;
-    }
-    .fab a:focus{outline:none; box-shadow: var(--ring)}
-
-    /* Bottom sticky bar (mobile-native) */
-    .bottomBar{
-      position:fixed;
-      left:0; right:0;
-      bottom:0;
-      z-index:90;
-      padding: 10px 12px calc(10px + var(--safe-bottom));
-      background:rgba(7,7,8,.75);
-      border-top:1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(12px);
-    }
-    .bottomBar .wrap{
-      width:min(var(--max), calc(100% - 16px));
-      margin:0 auto;
-      display:flex;
-      gap:10px;
-    }
-    .bottomBar .wrap a{
-      flex:1 1 0;
-      text-align:center;
-      padding:12px 12px;
-      border-radius:16px;
-      font-weight:950;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-    }
-    .bottomBar .wrap a.primary{
-      background:linear-gradient(135deg, var(--red) 0%, #ff3c4b 55%, #ff6a75 100%);
-      border-color: rgba(255,27,45,.55);
-      color:#0b0b0c;
-    }
-
-    footer{
-      padding:18px 0 8px;
-      color:var(--muted);
-      font-size:13px;
-      border-top:1px solid rgba(255,255,255,.06);
-      margin-top: 16px;
-    }
-    .footRow{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center}
-    .links{display:flex; gap:10px; flex-wrap:wrap}
-    .links a{padding:8px 10px; border-radius:12px}
-    .links a:hover{background:rgba(255,255,255,.05); color:var(--text)}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- CONFIG -->
-  <script>
-    const RESILIENCE = {
-      gymName: "Resilience Brazilian Jiu Jitsu",
-      city: "São Sebastião do Paraíso - MG",
-      instagramGym: "resiliencebjj.ssp",
-      coachName: "Igor Sant'Ana",
-      instagramCoach: "igorsantanan",
-      phoneIntl: "+5535988826260",
-      phonePretty: "+55 35 98882-6260",
-      address: "R. Custódio Nascimento, 199 - Braz, São Sebastião do Paraíso - MG",
-      mapsQuery: "Resilience Brazilian Jiu Jitsu",
-      schedule: [
-        { day: "Segunda-feira", slots: [
-          { time:"06:00", type:"Adulto" },
-          { time:"18:30", type:"Adulto" },
-          { time:"19:30", type:"Adulto" }
-        ]},
-        { day: "Terça-feira", slots: [
-          { time:"08:30", type:"Kids" },
-          { time:"18:30", type:"Kids" },
-          { time:"19:30", type:"Adulto" }
-        ]},
-        { day: "Quarta-feira", slots: [
-          { time:"06:00", type:"Adulto" },
-          { time:"18:30", type:"Adulto" },
-          { time:"19:30", type:"Adulto" }
-        ]},
-        { day: "Quinta-feira", slots: [
-          { time:"08:30", type:"Kids" },
-          { time:"18:30", type:"Kids" },
-          { time:"19:30", type:"Adulto" }
-        ]},
-        { day: "Sexta-feira", slots: [
-          { time:"06:00", type:"Adulto No-Gi" },
-          { time:"18:30", type:"Adulto No-Gi" }
-        ]}
-      ]
-    };
-  </script>
-
   <header>
     <div class="container">
       <div class="nav">
         <a class="brand" href="#top" aria-label="Resilience BJJ">
-          <img src="logo.jpeg" alt="Logo Resilience BJJ" />
+          <img src="assets/logo.jpeg" alt="Logo Resilience BJJ" />
           <div>
             <div class="t1">Resilience BJJ</div>
             <div class="t2">Kids • Adulto • No-Gi • SSP/MG</div>
@@ -431,16 +42,19 @@
     <div class="container">
       <!-- HERO -->
       <section class="hero">
-        <span class="pill"><span class="dot"></span><span>Aula experimental <b style="color:#ffd5d9">gratuita</b> • Vagas limitadas</span></span>
+        <span class="pill"><span class="dot"></span><span>Aula experimental <b style="color:#ffd5d9">gratuita</b> •
+            Vagas limitadas</span></span>
 
-        <h1>Treine Jiu-Jitsu com método, energia e um time que te puxa pra cima.</h1>
+        <h1>Treine Jiu Jitsu com método, energia e um time que te puxa pra cima.</h1>
         <p>
           Quer sair do “vou começar” e finalmente entrar no tatame?
-          A Resilience é pra quem busca <b>evolução</b>, <b>disciplina</b> e treino de verdade — do iniciante ao avançado.
+          A Resilience é pra quem busca <b>evolução</b>, <b>disciplina</b> e treino de verdade - do iniciante ao
+          avançado.
         </p>
 
         <div class="heroActions">
-          <a class="btn primary" id="waHero" href="#" target="_blank" rel="noreferrer">Agendar aula gratuita (WhatsApp)</a>
+          <a class="btn primary" id="waHero" href="#" target="_blank" rel="noreferrer">Agendar aula gratuita
+            (WhatsApp)</a>
           <a class="btn" href="#horarios">Ver horários</a>
           <a class="btn ghost" id="mapsHero" href="#" target="_blank" rel="noreferrer">Como chegar</a>
         </div>
@@ -449,12 +63,12 @@
           <div class="tile">
             <div class="icon">🥋</div>
             <h3>Aprendizado estruturado</h3>
-            <p>Você entende o jogo e evolui com consistência — técnica, detalhes e aplicação.</p>
+            <p>Você entende o jogo e evolui com consistência - técnica, detalhes e aplicação.</p>
           </div>
           <div class="tile">
             <div class="icon">⚡</div>
             <h3>Condicionamento e confiança</h3>
-            <p>Melhore cardio, força e postura. Jiu-Jitsu muda corpo e mente.</p>
+            <p>Melhore cardio, força e postura. Jiu Jitsu muda corpo e mente.</p>
           </div>
           <div class="tile">
             <div class="icon">🤝</div>
@@ -497,13 +111,13 @@
       <!-- BENEFÍCIOS -->
       <section id="beneficios">
         <h2 class="h2">Por que treinar na Resilience?</h2>
-        <p class="sub">Treino certo no nível certo — pra você continuar e sentir resultado.</p>
+        <p class="sub">Treino certo no nível certo - pra você continuar e sentir resultado.</p>
 
         <div class="cards" style="margin-top:12px">
           <div class="tile">
             <div class="icon">🎯</div>
             <h3>Evolução visível</h3>
-            <p>Você sai da aula sabendo o que treinar e como melhorar no próximo rola.</p>
+            <p>Você sai da aula sabendo o que treinar e como melhorar no próximo rola(sparring).</p>
           </div>
           <div class="tile">
             <div class="icon">🧠</div>
@@ -521,11 +135,13 @@
       <!-- HORÁRIOS -->
       <section id="horarios">
         <h2 class="h2">Horários</h2>
-        <p class="sub">Toque no dia para abrir. Depois clique em <b>“Quero este horário”</b> e mande a mensagem pronta.</p>
+        <p class="sub">Toque no dia para abrir. Depois clique em <b>“Quero este horário”</b> e mande a mensagem pronta.
+        </p>
 
         <div class="legend">
           <span class="tag">Kids</span>
-          <span class="tag" style="border-color:rgba(255,27,45,.35); background:rgba(255,27,45,.10); color:#ffd5d9">Adulto</span>
+          <span class="tag"
+            style="border-color:rgba(255,27,45,.35); background:rgba(255,27,45,.10); color:#ffd5d9">Adulto</span>
           <span class="tag">No-Gi (sem kimono)</span>
         </div>
 
@@ -555,7 +171,7 @@
           <div class="tile">
             <div class="icon">3️⃣</div>
             <h3>Treine e sinta</h3>
-            <p>Técnica guiada + rola no nível certo. Evolução desde a primeira semana.</p>
+            <p>Técnica guiada + rola (sparring) no nível certo. Evolução desde a primeira semana.</p>
           </div>
         </div>
 
@@ -563,7 +179,8 @@
           <div class="pad">
             <div style="font-weight:950; margin-bottom:6px;">Kimono é obrigatório?</div>
             <div class="muted" style="line-height:1.6;">
-              Se você ainda não tem kimono, chama no WhatsApp e a gente orienta como será sua aula experimental gratuita.
+              Se você ainda não tem kimono, chama no WhatsApp e a gente orienta como será sua aula experimental
+              gratuita.
             </div>
           </div>
         </div>
@@ -577,7 +194,7 @@
         <div class="faq" style="margin-top:12px">
           <details class="faqItem">
             <summary class="faqSum">A aula experimental é gratuita?</summary>
-            <p>Sim — a aula experimental é gratuita. É só chamar no WhatsApp e escolher um horário.</p>
+            <p>Sim. A aula experimental é gratuita. É só chamar no WhatsApp e escolher um horário.</p>
           </details>
           <details class="faqItem">
             <summary class="faqSum">Preciso ter condicionamento para começar?</summary>
@@ -589,7 +206,7 @@
           </details>
           <details class="faqItem">
             <summary class="faqSum">O que é No-Gi?</summary>
-            <p>No-Gi é Jiu-Jitsu sem kimono. Trabalha velocidade, pegadas diferentes e adaptação.</p>
+            <p>No-Gi é Jiu Jitsu sem kimono. Trabalha velocidade, pegadas diferentes e adaptação.</p>
           </details>
         </div>
       </section>
@@ -607,12 +224,8 @@
             </div>
             <a class="btn small ghost" id="mapsOpen" href="#" target="_blank" rel="noreferrer">Abrir no Maps</a>
           </div>
-          <iframe
-            id="mapsEmbed"
-            title="Resilience BJJ no Google Maps"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="">
+          <iframe id="mapsEmbed" title="Resilience BJJ no Google Maps" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" src="">
           </iframe>
         </div>
 
@@ -625,7 +238,7 @@
       <footer>
         <div class="footRow">
           <div>
-            <b style="color:var(--text)">Resilience BJJ</b> • <span id="cityLine"></span><br/>
+            <b style="color:var(--text)">Resilience BJJ</b> • <span id="cityLine"></span><br />
             <span>© <span id="year"></span> • Todos os direitos reservados.</span>
           </div>
           <div class="links">
@@ -638,11 +251,6 @@
     </div>
   </main>
 
-  <!-- Floating WhatsApp button -->
-  <div class="fab" aria-label="WhatsApp flutuante">
-    <a id="waFab" href="#" target="_blank" rel="noreferrer" title="Agendar no WhatsApp">WA</a>
-  </div>
-
   <!-- Bottom sticky bar -->
   <div class="bottomBar" role="navigation" aria-label="Ações rápidas">
     <div class="wrap">
@@ -650,131 +258,7 @@
       <a href="#horarios">Horários</a>
     </div>
   </div>
-
-  <script>
-    // Helpers
-    const waLink = (phone, text) => {
-      const msg = encodeURIComponent(text);
-      return `https://wa.me/${phone.replace(/\D/g,'')}?text=${msg}`;
-    };
-    const igLink = (handle) => `https://instagram.com/${handle.replace('@','')}`;
-    const mapsLink = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-
-    const defaultMsg = `Olá! Quero agendar uma aula experimental gratuita na Resilience BJJ.\nMeu nível é: (iniciante/intermediário/avançado).`;
-    const wa = waLink(RESILIENCE.phoneIntl, defaultMsg);
-    const igGym = igLink(RESILIENCE.instagramGym);
-    const igCoach = igLink(RESILIENCE.instagramCoach);
-    const maps = mapsLink(RESILIENCE.mapsQuery);
-
-    // Bind basic info
-    document.getElementById("coachName").textContent = RESILIENCE.coachName;
-    document.getElementById("phonePretty").textContent = RESILIENCE.phonePretty;
-    document.getElementById("addressLine").textContent = RESILIENCE.address;
-    document.getElementById("addressText").textContent = RESILIENCE.address;
-    document.getElementById("cityLine").textContent = RESILIENCE.city;
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Buttons
-    ["waTop","waHero","waCoach","waLocal","waFooter","waFab","waBottom"].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.href = wa;
-    });
-
-    ["igGymTop","igGym","igGym2"].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.href = igGym;
-    });
-
-    ["igCoach","igCoach2"].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.href = igCoach;
-    });
-
-    ["mapsHero","mapsOpen"].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.href = maps;
-    });
-
-    // Maps embed
-    document.getElementById("mapsEmbed").src =
-      "https://www.google.com/maps?q=" + encodeURIComponent(RESILIENCE.mapsQuery) + "&output=embed";
-
-    // Schedule render (accordion)
-    const scheduleGrid = document.getElementById("scheduleGrid");
-
-    const dayTag = (slots) => {
-      const hasKids = slots.some(s => s.type.toLowerCase().includes("kids"));
-      const hasNogi = slots.some(s => s.type.toLowerCase().includes("no-gi") || s.type.toLowerCase().includes("nogi"));
-      if (hasKids && hasNogi) return "Kids • No-Gi";
-      if (hasKids) return "Kids • Adulto";
-      if (hasNogi) return "No-Gi";
-      return "Adulto";
-    };
-
-    const typeLabel = (t) => {
-      const norm = t.toLowerCase();
-      if (norm.includes("kids")) return `<span class="type"><b>Kids</b></span>`;
-      if (norm.includes("no-gi") || norm.includes("nogi")) return `<span class="type"><b>No-Gi</b> (Adulto)</span>`;
-      return `<span class="type"><b>Adulto</b></span>`;
-    };
-
-    const makeSlotMessage = (day, time, type) => {
-      return `Olá! Quero agendar uma aula experimental gratuita na Resilience BJJ.\n` +
-             `Tenho interesse no horário: ${day} ${time} (${type}).\n` +
-             `Meu nível é: (iniciante/intermediário/avançado).`;
-    };
-
-    // Open first day by default for quicker conversion
-    scheduleGrid.innerHTML = RESILIENCE.schedule.map((d, idx) => {
-      const openAttr = idx === 0 ? "open" : "";
-      const tag = dayTag(d.slots);
-
-      const slotsHtml = d.slots.map(s => {
-        const href = waLink(RESILIENCE.phoneIntl, makeSlotMessage(d.day, s.time, s.type));
-        return `
-          <div class="slot">
-            <div class="left">
-              <div class="time">${s.time}</div>
-              ${typeLabel(s.type)}
-            </div>
-            <a class="mini" href="${href}" target="_blank" rel="noreferrer">Quero este horário</a>
-          </div>
-        `;
-      }).join("");
-
-      return `
-        <details class="day" ${openAttr}>
-          <summary class="daySum">
-            <span>${d.day}</span>
-            <span class="tag">${tag}</span>
-          </summary>
-          <div class="slots">
-            ${slotsHtml}
-          </div>
-        </details>
-      `;
-    }).join("");
-  </script>
-
-  <!-- SEO Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
-    "name": "Resilience Brazilian Jiu Jitsu",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "R. Custódio Nascimento, 199 - Braz",
-      "addressLocality": "São Sebastião do Paraíso",
-      "addressRegion": "MG",
-      "addressCountry": "BR"
-    },
-    "telephone": "+55 35 98882-6260",
-    "sameAs": [
-      "https://instagram.com/resiliencebjj.ssp",
-      "https://instagram.com/igorsantanan"
-    ]
-  }
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
