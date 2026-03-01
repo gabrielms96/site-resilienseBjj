@@ -50,7 +50,7 @@ export default function Header() {
               <span className="inline-flex items-center gap-1.5">
                 <span className="max-[520px]:hidden">Aula grátis • Agendar</span>
                 <span className="hidden max-[520px]:inline">Agendar</span>
-                <WhatsAppIcon />
+                <WhatsAppIcon className="hidden max-[520px]:inline" />
               </span>
             </a>
           </div>
