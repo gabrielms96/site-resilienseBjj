@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Global styles that don't map cleanly to Tailwind ===== */
+
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  color: #f4f4f5;
+  background: radial-gradient(
+      900px 550px at 70% 10%,
+      rgba(255, 27, 45, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 500px at 12% 18%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      600px 400px at 25% 85%,
+      rgba(255, 27, 45, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #050506 0%, #0b0b0c 30%, #050506 100%);
+  background-attachment: fixed;
+  /* iOS Safari fallback: fixed attachment may not scroll correctly */
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Avatar gradient (too complex for Tailwind inline) */
+.avatar-gradient {
+  background: radial-gradient(
+      circle at 35% 30%,
+      rgba(255, 27, 45, 0.85),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255, 255, 255, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(135deg, #111, #060607);
+}
+
+/* Open day gradient (details[open]) */
+details.day-accordion {
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+details.day-accordion[open] {
+  background: radial-gradient(
+      700px 250px at 20% 10%,
+      rgba(255, 27, 45, 0.16),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 27, 45, 0.25);
+}
+
+/* Remove native details marker */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary {
+  list-style: none;
+}
+
+/* Focus visible para links e buttons */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ===== Button component classes (reused across many components) ===== */
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f4f4f5;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-base:hover {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.btn-base:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 27, 45, 0.25);
+}
+
+.btn-base:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff1b2d 0%, #ff3c4b 55%, #ff6a75 100%);
+  border-color: rgba(255, 27, 45, 0.55);
+  color: #0b0b0c;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ff1b2d 0%, #ff3c4b 55%, #ff6a75 100%);
+  border-color: rgba(255, 27, 45, 0.7);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-small {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-radius: 13px;
+}
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn-base:hover {
+    opacity: 1;
+  }
+}
+
+/* Mobile: buttons grow */
+@media (max-width: 520px) {
+  .btn-base {
+    flex: 1 1 160px;
+  }
+  .btn-base.btn-primary {
+    flex: 1 1 220px;
+  }
+}
+
