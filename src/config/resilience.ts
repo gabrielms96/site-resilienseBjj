@@ -55,8 +55,8 @@ export const RESILIENCE = {
     {
       day: "Sexta-feira",
       slots: [
-        { time: "06:00", type: "Adulto No-Gi" },
-        { time: "18:30", type: "Adulto No-Gi" },
+        { time: "06:00", type: "No-Gi" },
+        { time: "18:30", type: "No-Gi" },
       ],
     },
   ] as ScheduleDay[],
@@ -98,15 +98,31 @@ export function dayTag(slots: Slot[]): string {
   const hasKids = slots.some((s) =>
     s.type.toLowerCase().includes("kids"),
   );
-  const hasNogi = slots.some(
-    (s) =>
-      s.type.toLowerCase().includes("no-gi") ||
-      s.type.toLowerCase().includes("nogi"),
+  const hasAdulto = slots.some((s) =>
+    s.type.toLowerCase() === "adulto",
   );
-  if (hasKids && hasNogi) return "Kids • No-Gi";
-  if (hasKids) return "Kids • Adulto";
-  if (hasNogi) return "No-Gi";
-  return "Adulto";
+  const hasNogi = slots.some((s) =>
+    s.type.toLowerCase().includes("no-gi") ||
+    s.type.toLowerCase().includes("nogi"),
+  );
+
+  const tags: string[] = [];
+  if (hasKids) tags.push("Kids");
+  if (hasAdulto) tags.push("Adulto");
+  if (hasNogi) tags.push("No-Gi");
+
+  return tags.length > 0 ? tags.join(" • ") : "Adulto";
+}
+
+export function matchesFilter(
+  slotType: string,
+  selectedCategories: string[],
+): boolean {
+  if (selectedCategories.length === 0) return false;
+  const typeLower = slotType.toLowerCase();
+  return selectedCategories.some((category) =>
+    typeLower.includes(category.toLowerCase()),
+  );
 }
 
 export function makeSlotMessage(

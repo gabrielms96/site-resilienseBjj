@@ -1,7 +1,54 @@
-import { RESILIENCE } from "../config/resilience";
+import { useState } from "react";
+import { RESILIENCE, matchesFilter } from "../config/resilience";
 import ScheduleDay from "./schedule-day";
 
+type Category = "Kids" | "Adulto" | "No-Gi";
+
+const CATEGORIES: Category[] = ["Kids", "Adulto", "No-Gi"];
+const CATEGORY_LABELS: Record<Category, string> = {
+  Kids: "Kids",
+  Adulto: "Adulto",
+  "No-Gi": "No-Gi (sem kimono)",
+};
+
+const CATEGORY_STYLES: Record<Category, { active: string; inactive: string }> = {
+  Kids: {
+    active: "border-red/60 bg-red/20 text-pink",
+    inactive: "border-white/[0.12] bg-white/[0.03] text-muted",
+  },
+  Adulto: {
+    active: "border-red/60 bg-red/20 text-pink",
+    inactive: "border-white/[0.12] bg-white/[0.03] text-muted",
+  },
+  "No-Gi": {
+    active: "border-red/60 bg-red/20 text-pink",
+    inactive: "border-white/[0.12] bg-white/[0.03] text-muted",
+  },
+};
+
 export default function Schedule() {
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>(
+    CATEGORIES,
+  );
+
+  const toggleCategory = (category: Category) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category],
+    );
+  };
+
+  // Filter days based on selected categories
+  const filteredSchedule = RESILIENCE.schedule
+    .map((day) => ({
+      ...day,
+      slots: day.slots.filter((slot) =>
+        matchesFilter(slot.type, selectedCategories),
+      ),
+    }))
+    .filter((day) => day.slots.length > 0);
+
   return (
     <section id="horarios" className="relative border-t border-white/[0.05] py-[52px]">
       {/* Ambient glow for the most-interactive section */}
@@ -15,28 +62,42 @@ export default function Schedule() {
         pronta.
       </p>
 
-      {/* Legend */}
+      {/* Filter Legend */}
       <div className="mt-2.5 flex flex-wrap gap-2">
-        <span className="whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-2.5 py-1.5 text-[11px] font-[950] text-muted">
-          Kids
-        </span>
-        <span className="whitespace-nowrap rounded-full border border-red/35 bg-red/10 px-2.5 py-1.5 text-[11px] font-[950] text-pink">
-          Adulto
-        </span>
-        <span className="whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-2.5 py-1.5 text-[11px] font-[950] text-muted">
-          No-Gi (sem kimono)
-        </span>
+        {CATEGORIES.map((category) => {
+          const isActive = selectedCategories.includes(category);
+          const styles = CATEGORY_STYLES[category];
+          return (
+            <button
+              key={category}
+              onClick={() => toggleCategory(category)}
+              className={`whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[11px] font-[950] transition-colors duration-200 ${
+                isActive ? styles.active : styles.inactive
+              }`}
+              aria-pressed={isActive}
+              type="button"
+            >
+              {CATEGORY_LABELS[category]}
+            </button>
+          );
+        })}
       </div>
 
       {/* Schedule grid */}
       <div className="mt-3 grid gap-2.5">
-        {RESILIENCE.schedule.map((day, idx) => (
-          <ScheduleDay
-            key={day.day}
-            data={day}
-            defaultOpen={idx === 0}
-          />
-        ))}
+        {filteredSchedule.length > 0 ? (
+          filteredSchedule.map((day, idx) => (
+            <ScheduleDay
+              key={day.day}
+              data={day}
+              defaultOpen={idx === 0}
+            />
+          ))
+        ) : (
+          <p className="py-6 text-center text-muted">
+            Nenhum horário disponível com os filtros selecionados.
+          </p>
+        )}
       </div>
 
       <p className="mt-3 text-[13px] leading-[1.6] text-muted">
