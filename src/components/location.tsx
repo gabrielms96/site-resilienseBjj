@@ -8,7 +8,7 @@ import {
 
 export default function Location() {
   return (
-    <section id="local" className="py-[22px]">
+    <section id="local" className="border-t border-white/[0.05] py-[52px]">
       <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Localização
       </h2>

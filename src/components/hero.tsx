@@ -5,7 +5,7 @@ import TileGrid from "./tile-grid";
 
 export default function Hero() {
   return (
-    <section className="grid gap-3.5 pb-1.5 pt-[22px]" id="top">
+    <section className="grid gap-3.5 pb-[52px] pt-[22px]" id="top">
       {/* Pill */}
       <span className="inline-flex items-center gap-2.5 self-start rounded-full border border-line bg-white/[0.03] px-3.5 py-2.5 text-[13px] font-[800] text-muted backdrop-blur-[10px]">
         <span className="h-2 w-2 rounded-full bg-red shadow-[0_0_0_4px_rgba(255,27,45,0.15)]" />

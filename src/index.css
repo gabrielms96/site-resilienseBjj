@@ -35,7 +35,14 @@ body {
       rgba(255, 255, 255, 0.06),
       transparent 60%
     ),
+    radial-gradient(
+      600px 400px at 25% 85%,
+      rgba(255, 27, 45, 0.12),
+      transparent 60%
+    ),
     linear-gradient(180deg, #050506 0%, #0b0b0c 30%, #050506 100%);
+  background-attachment: fixed;
+  /* iOS Safari fallback: fixed attachment may not scroll correctly */
   overflow-x: hidden;
 }
 

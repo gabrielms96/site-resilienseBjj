@@ -3,7 +3,7 @@ import TileGrid from "./tile-grid";
 
 export default function HowItWorks() {
   return (
-    <section id="como" className="py-[22px]">
+    <section id="como" className="border-t border-white/[0.05] py-[52px]">
       <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Como é a primeira aula
       </h2>

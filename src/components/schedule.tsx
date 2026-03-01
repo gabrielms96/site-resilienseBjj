@@ -3,7 +3,9 @@ import ScheduleDay from "./schedule-day";
 
 export default function Schedule() {
   return (
-    <section id="horarios" className="py-[22px]">
+    <section id="horarios" className="relative border-t border-white/[0.05] py-[52px]">
+      {/* Ambient glow for the most-interactive section */}
+      <div className="pointer-events-none absolute inset-0 rounded-r24 bg-[radial-gradient(500px_300px_at_70%_30%,rgba(255,27,45,0.07),transparent_70%)]" />
       <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Horários
       </h2>

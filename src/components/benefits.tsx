@@ -3,7 +3,7 @@ import TileGrid from "./tile-grid";
 
 export default function Benefits() {
   return (
-    <section id="beneficios" className="py-[22px]">
+    <section id="beneficios" className="border-t border-white/[0.05] py-[52px]">
       <h2 className="mb-1.5 mt-0 text-[22px] font-bold tracking-[-0.02em]">
         Por que treinar na Resilience?
       </h2>
