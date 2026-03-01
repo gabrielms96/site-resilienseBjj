@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RESILIENCE, matchesFilter } from "../config/resilience";
+import { cn } from "../lib/cn";
 import ScheduleDay from "./schedule-day";
 
 type Category = "Kids" | "Adulto" | "No-Gi";
@@ -71,9 +72,10 @@ export default function Schedule() {
             <button
               key={category}
               onClick={() => toggleCategory(category)}
-              className={`whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[11px] font-[950] transition-colors duration-200 ${
-                isActive ? styles.active : styles.inactive
-              }`}
+              className={cn(
+                "whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[11px] font-[950] transition-colors duration-200",
+                isActive ? styles.active : styles.inactive,
+              )}
               aria-pressed={isActive}
               type="button"
             >

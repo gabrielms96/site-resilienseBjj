@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "../lib/cn";
 
 interface TileGridProps {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface TileGridProps {
 export default function TileGrid({ children, className = "" }: TileGridProps) {
   return (
     <div
-      className={`grid grid-cols-1 gap-3 min-[901px]:grid-cols-3 ${className}`}
+      className={cn("grid grid-cols-1 gap-3 min-[901px]:grid-cols-3", className)}
     >
       {children}
     </div>

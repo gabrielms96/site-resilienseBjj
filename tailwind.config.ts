@@ -39,4 +39,9 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    { pattern: /^border-(red|white)/ },
+    { pattern: /^bg-(red|white)/ },
+    { pattern: /^text-(pink|muted|text)/ },
+  ],
 } satisfies Config;
